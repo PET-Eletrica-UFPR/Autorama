@@ -53,6 +53,8 @@ void loop()
 
   analogWrite(3, spd1);
   analogWrite(5, spd2);
+
+  
 }
 int velocidade(float gas, int divisor, bool pedal)
 {
@@ -79,8 +81,11 @@ int velocidade(float gas, int divisor, bool pedal)
 }
 
 float gas_level(int speed, float combustivel)
-{
+{ int i = 0;
   float consumo = map(speed, 0, 255, 0, 1);
-  combustivel -= consumo;
+  if(i > 10000000){
+    combustivel -= consumo;
+    i = 0;
+  }
   return combustivel; 
 }
